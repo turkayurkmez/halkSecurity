@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" ValidateRequest="true" %>
+﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="_Default" ValidateRequest="true" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -10,10 +10,11 @@
 
     <div class="row">
         <div class="col-md-4">
-            <asp:TextBox ID="TextBoxInput" runat="server" Height="113px" TextMode="MultiLine" Width="335px"></asp:TextBox>
-            <asp:Button ID="ButtonEnter" runat="server" Text="Giriş" OnClick="ButtonEnter_Click" />
             <br />
-            <asp:Label ID="LabelOutput" runat="server" Text="Label"></asp:Label>
+            <asp:TextBox ID="TextBoxUsername" runat="server"></asp:TextBox>
+            <asp:TextBox ID="TextBoxPassword" runat="server"></asp:TextBox>
+            <asp:Button ID="ButtonLogin" runat="server" OnClick="ButtonLogin_Click" Text="Giriş" />
+            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
         </div>
         <div class="col-md-4">
             <p>
