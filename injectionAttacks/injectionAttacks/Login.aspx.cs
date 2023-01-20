@@ -18,17 +18,20 @@ public partial class _Default : Page
     protected void ButtonLogin_Click(object sender, EventArgs e)
     {
         SqlConnection sqlConnection = new SqlConnection("Data Source=(localdb)\\Mssqllocaldb;Initial Catalog=Northwind;Integrated Security=True");
-        SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Employees WHERE FirstName='" + TextBoxUsername.Text + "' AND LastName='" + TextBoxPassword.Text + "'", sqlConnection);
+        SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Employees WHERE FirstName=@name AND LastName=@password", sqlConnection);
+        sqlCommand.Parameters.AddWithValue("@name", TextBoxUsername.Text);
+        sqlCommand.Parameters.AddWithValue("@password", TextBoxPassword.Text);
+
         sqlConnection.Open();
         var reader = sqlCommand.ExecuteReader();
-        if (reader.Read())
-        {
-            Label1.Text = "Giriş yapıldı";
-        }
-        else
-        {
-            Label1.Text = "Hatalı Giriş";
-        }
+        Label1.Text = reader.Read() ? "Giriş yapıldı" : "Hatalı Giriş";
         sqlConnection.Close();
+
+
+        /*
+         * XSRF : Cross Site Request Forgery
+         * İstek gönderen ile oturum açan istemcinin FARKLI olduğunu nasıl anlarım?
+         * Anti Forgery Token
+         */
     }
 }
