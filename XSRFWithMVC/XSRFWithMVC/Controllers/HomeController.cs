@@ -18,8 +18,17 @@ namespace XSRFWithMVC.Controllers
             return View();
         }
 
+
+
         public IActionResult Privacy()
         {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Privacy(string sample)
+        {
+
             return View();
         }
 
