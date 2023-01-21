@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "H2TlzRG40RI1I8VsGcry3F+3zIddgVaHMtofsZSkv3o=",
+  "Source": "BasicAuth.API",
+  "BasePath": "_content/BasicAuth.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
