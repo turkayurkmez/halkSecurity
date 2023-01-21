@@ -21,12 +21,12 @@ namespace ClaimBasedAuthentication.Controllers
 
             if (user != null)
             {
-                //Kimliğini kanıtladnın şimdi, ziyaretçi kartı alma zamanı
+                //Kimliğini kanıtladın. Şimdi, ziyaretçi kartı alma zamanı
                 List<Claim> claims = new List<Claim>()
                 {
                     new Claim(ClaimTypes.Name, userLoginModel.UserName),
                     new Claim(ClaimTypes.Email, user.Email),
-                    new Claim(ClaimTypes.Role,user.Role)
+                    new Claim(ClaimTypes.Role, user.Role)
                 };
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
@@ -38,6 +38,17 @@ namespace ClaimBasedAuthentication.Controllers
 
 
 
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return Redirect("/");
+        }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
 
 
@@ -57,7 +68,7 @@ namespace ClaimBasedAuthentication.Controllers
         private List<User> users = new List<User>
         {
             new User{ Id=1, UserName="turkay", Password="123", Email="turkay@halkbank.com.tr", Role="Admin" },
-            new User{ Id=2, UserName="Gökhan Tombul", Password="123", Email="gokhan.tombul@halkbank.com.tr", Role="Client" },
+            new User{ Id=2, UserName="gokhantombul", Password="123", Email="gokhan.tombul@halkbank.com.tr", Role="Client" },
             new User{ Id=3, UserName="alikavak", Password="123", Email="ali.kavak@halkbank.com.tr", Role="Editor" },
 
         };

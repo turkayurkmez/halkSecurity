@@ -19,7 +19,7 @@ namespace ClaimBasedAuthentication.Controllers
             return View();
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin,Editor")]
         public IActionResult Privacy()
         {
             return View();

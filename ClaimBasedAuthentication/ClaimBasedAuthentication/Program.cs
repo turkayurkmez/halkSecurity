@@ -15,6 +15,7 @@ namespace ClaimBasedAuthentication
                             .AddCookie(opt =>
                             {
                                 opt.LoginPath = "/Users/Login";
+                                opt.AccessDeniedPath = "/Users/AccessDenied";
 
                             });
 
